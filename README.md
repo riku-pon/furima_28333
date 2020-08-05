@@ -51,24 +51,24 @@ Things you may want to cover:
 | image_url           | string  | null: false |
 | name                | text    | null: false |
 | description         | text    | null: false |
-| category            | string  | null: false |
-| status              | string  | null: false |
-| shipping_charges    | string  | null: false |
-| shipping_region     | string  | null: false |
+| category            | integer | null: false |
+| status              | integer | null: false |
+| shipping_charges    | integer | null: false |
+| shipping_region     | integer | null: false |
 | days_until_shipping | integer | null: false |
 | selling_price       | integer | null: false |
 
 ### Association
 
  - belongs_to :user
- - belongs_to :item
+ - belongs_to :delivery
 
 ## deliverys テーブル
 
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
 | postal_code   | integer | null: false |
-| prefectures   | string  | null: false |
+| prefectures   | integer | null: false |
 | city          | string  | null: false |
 | address       | string  | null: false |
 | building_name | string  |
@@ -76,4 +76,4 @@ Things you may want to cover:
 
 ### Association
 
-  - has_one :delivery
+  - has_one :item

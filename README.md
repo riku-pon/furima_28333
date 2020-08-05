@@ -39,25 +39,36 @@ Things you may want to cover:
 | phonetic_first_name  | string | null: false |
 | birthday             | date   | null: false |
 
+### Association
+
+ - has_many :items
+ - has_many :deliverys
+
 ## items テーブル
 
-| Column           | Type    | Options     |
-| ---------------- | ------- | ----------- |
-| image_url        | string  | null: false |
-| name             | text    | null: false |
-| description      | text    | null: false |
-| selling_price    | integer | null: false |
+| Column              | Type    | Options     |
+| ------------------- | ------- | ----------- |
+| image_url           | string  | null: false |
+| name                | text    | null: false |
+| description         | text    | null: false |
+| category            | string  | null: false |
+| status              | string  | null: false |
+| shipping_charges    | string  | null: false |
+| shipping_region     | string  | null: false |
+| days_until_shipping | integer | null: false |
+| selling_price       | integer | null: false |
 
 ### Association
 
  - belongs_to :user
- - has_one :delivery
+ - belongs_to :item
 
 ## deliverys テーブル
 
 | Column        | Type    | Options     |
 | ------------- | ------- | ----------- |
-| postal_code   | string  | null: false |
+| postal_code   | integer | null: false |
+| prefectures   | string  | null: false |
 | city          | string  | null: false |
 | address       | string  | null: false |
 | building_name | string  |
@@ -65,4 +76,4 @@ Things you may want to cover:
 
 ### Association
 
- - belongs_to :item
+  - has_one :delivery

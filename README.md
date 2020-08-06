@@ -50,7 +50,7 @@ Things you may want to cover:
 | Column              | Type      | Options                        |
 | ------------------- | --------- | ------------------------------ |
 | image_url           | string    | null: false                    |
-| name                | text      | null: false                    |
+| name                | string    | null: false                    |
 | description         | text      | null: false                    |
 | category            | integer   | null: false                    |
 | status              | integer   | null: false                    |
@@ -64,7 +64,6 @@ Things you may want to cover:
 
  - belongs_to :user
  - has_one :address
- - has_many :Transactions
 
 ### Transactions テーブル
 
@@ -76,7 +75,6 @@ Things you may want to cover:
 ## Association
 
  - belongs_to :user
- - belongs_to :item
 
 ## addresses テーブル
 

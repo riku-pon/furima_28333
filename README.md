@@ -43,13 +43,12 @@ Things you may want to cover:
 
  - has_many :items
  - has_many :addresses
- - has_many :Transactions
+ - has_one :transactions
 
 ## items テーブル
 
 | Column              | Type      | Options                        |
 | ------------------- | --------- | ------------------------------ |
-| image_url           | string    | null: false                    |
 | name                | string    | null: false                    |
 | description         | text      | null: false                    |
 | category            | integer   | null: false                    |
@@ -65,7 +64,7 @@ Things you may want to cover:
  - belongs_to :user
  - has_one :address
 
-### Transactions テーブル
+### transactions テーブル
 
 | Column     | Type    | Options     |
 | ---------- | ------- | ----------- |
@@ -86,7 +85,7 @@ Things you may want to cover:
 | address       | string    | null: false                    |
 | building_name | string    |
 | phone_number  | string    | null: false                    |
-| users_id      | reference | null: false, foreign_key: true |
+| items_id      | reference | null: false, foreign_key: true |
 
 ### Association
 

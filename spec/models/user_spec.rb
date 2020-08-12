@@ -111,6 +111,12 @@ RSpec.describe User, type: :model do
           @user.valid?
           expect(@user.errors.full_messages).to include('Phonetic first name Full-width katakana characters')
         end
+
+        it 'emailに@が存在しない場合は登録できないこと' do
+          @user.email = 'pon315'
+          @user.valid?
+          expect(@user.errors.full_messages).to include("Email is invalid")
+        end
       end
     end
   end

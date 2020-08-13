@@ -8,5 +8,6 @@ class User < ApplicationRecord
     validates :phonetic_family_name, :phonetic_first_name, format: { with: /\A[ァ-ヶー－]+\z/, message: 'Full-width katakana characters' }
     validates :nickname, :birthday
   end
+  validates_uniqueness_of :nickname, case_sensitive: true
   validates :password, format: { with: /\A[a-zA-Z0-9]+\z/, message: 'Include both letters and numbers' }
 end

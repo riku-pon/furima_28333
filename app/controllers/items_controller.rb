@@ -5,16 +5,18 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def create
-    Item.create(item_params)
+    @item = Item.new(item_params)
+    @item.save
   end
 
   private
 
   def item_params
-    params.require(:item).permit(:image, :name, :description, :category,:status, :shipping_charges, :shipping_region, :days_until_shipping, :selling_price).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :name, :description, :category_id, :status_id, :shipping_charge_id, :shipping_region_id, :days_until_shipping_id, :selling_price).merge(user_id: current_user.id)
   end
 
   def move_to_new

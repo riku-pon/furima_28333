@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-    FULL_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
-    FULL_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
-    PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/.freeze
+  FULL_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
+  FULL_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
+  PASSWORD_REGEX = /\A[a-zA-Z0-9]+\z/.freeze
 
   with_options presence: true do
     validates :family_name, :first_name, format: { with: FULL_NAME_REGEX, message: 'Full-width characters' }

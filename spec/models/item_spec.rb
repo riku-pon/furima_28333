@@ -41,49 +41,49 @@ RSpec.describe Item, type: :model do
         it 'selling_priceが299円以下では保存できないこと' do
           @item.selling_price = 299
           @item.valid?
-          expect(@item.errors.full_messages).to include("Selling price Out of setting range")
+          expect(@item.errors.full_messages).to include('Selling price Out of setting range')
         end
 
         it 'selling_priceが10000000円以上では保存できないこと' do
-          @item.selling_price = 10000000
+          @item.selling_price = 10_000_000
           @item.valid?
-          expect(@item.errors.full_messages).to include("Selling price Out of setting range")
+          expect(@item.errors.full_messages).to include('Selling price Out of setting range')
         end
 
-         it 'selling_priceが半角数字以外では登録できないこと' do
-           @item.selling_price = 'あ'
-           @item.valid?
-           expect(@item.errors.full_messages).to include("Selling price Half-width number")
-         end
+        it 'selling_priceが半角数字以外では登録できないこと' do
+          @item.selling_price = 'あ'
+          @item.valid?
+          expect(@item.errors.full_messages).to include('Selling price Half-width number')
+        end
 
         it 'category_idが「1」では保存できないこと' do
           @item.category_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include("Category Select")
+          expect(@item.errors.full_messages).to include('Category Select')
         end
 
         it 'status_idが「1」では保存できないこと' do
           @item.status_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include("Status Select")
+          expect(@item.errors.full_messages).to include('Status Select')
         end
 
         it 'shipping_charge_idが「1」では保存できないこと' do
           @item.shipping_charge_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include("Shipping charge Select")
+          expect(@item.errors.full_messages).to include('Shipping charge Select')
         end
 
         it 'shipping_region_idが「1」では保存できないこと' do
           @item.shipping_region_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include("Shipping region Select")
+          expect(@item.errors.full_messages).to include('Shipping region Select')
         end
 
         it 'days_until_shipping_idが「1」では保存できないこと' do
           @item.days_until_shipping_id = 1
           @item.valid?
-          expect(@item.errors.full_messages).to include("Days until shipping Select")
+          expect(@item.errors.full_messages).to include('Days until shipping Select')
         end
       end
     end

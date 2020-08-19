@@ -10,7 +10,11 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.save
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   private
@@ -21,7 +25,7 @@ class ItemsController < ApplicationController
 
   def move_to_new
     unless user_signed_in?
-      redirect_to "/users/sign_in"
+      redirect_to new_user_session_path
     end
   end
 end

@@ -12,14 +12,23 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   # バリデーション
+  SELLING_PRICE = /\A[0-9]+\z/.freeze
 
-  # with_optionsでまとめてバリデーションを付けている
-  with_options presence: true do
-    validates :name, :description, :selling_price
-  end
-
-  # アクティブハッシュのバリデーション
-  with_options numericality: { other_than: 1 } do
+   # アクティブハッシュのバリデーション
+  # other_than: 1でidが1以外であれば保存できる
+  with_options numericality: { other_than: 1, message: 'Select' } do  # with_optionsでまとめてバリデーションを付けている
     validates :category_id, :status_id, :shipping_charge_id, :shipping_region_id, :days_until_shipping_id
   end
+
+  # presence: trueで空の投稿ができなくなる
+  with_options presence: true do   # with_optionsでまとめてバリデーションを付けている
+    validates :image, :name, :description, :selling_price
+  end
+
+  # 価格は半角数字でないと保存できない
+  validates :selling_price, numericality: { with: SELLING_PRICE, message: 'Half-width number' }
+  # 価格が数値のみでないと保存できない
+  validates :selling_price, numericality: { only_integer: true, message: 'Other than numbers' }
+  # 価格が300円〜9999999円の範囲であること
+  validates :selling_price, inclusion: { in: (300..9999999), message: 'Out of setting range'}
 end

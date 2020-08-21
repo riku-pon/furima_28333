@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :find_item, only: :order
 
   def index
-    @items = Item.all.order("created_at DESC")
+    @items = Item.all.order('created_at DESC') # 商品の並びを新着順にしている
   end
 
   def new
@@ -17,6 +17,10 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
   def order # 購入する時のアクションを定義

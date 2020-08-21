@@ -1,6 +1,14 @@
 class ItemsController < ApplicationController
   before_action :move_to_new, only: :new
   before_action :find_item, only: :order
+  before_action :item_purcahced? 
+  
+  # def item_purcahced? メンターさんに質問して教えていただいたところ（商品購入機能）
+  #   @item = Item.find(params[:item_id])
+  #   if @item.order.persisted
+  #     redirect_to root_path
+  #   end 
+  # end
 
   def index
     @items = Item.all.order('created_at DESC') # 商品の並びを新着順にしている

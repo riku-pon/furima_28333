@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_new, only: :new
   before_action :find_item, only: :order
-  before_action :item_purcahced? 
+  # before_action :item_purcahced? 
   
   # def item_purcahced? メンターさんに質問して教えていただいたところ（商品購入機能）
   #   @item = Item.find(params[:item_id])

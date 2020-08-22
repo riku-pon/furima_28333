@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_new, only: :new
   before_action :find_item, only: :order
+  before_action :set_item, only: [:show, :edit, :update]
 
   def index
     @items = Item.all.order('created_at DESC') # 商品の並びを新着順にしている
@@ -20,15 +21,12 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -53,5 +51,9 @@ class ItemsController < ApplicationController
 
   def find_item
     @item = Item.find(params[:id]) # 購入する商品を特定
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end

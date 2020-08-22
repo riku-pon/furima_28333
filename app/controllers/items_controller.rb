@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :move_to_new, only: :new
   before_action :find_item, only: :order
-  before_action :set_item, only: [:show, :edit, :update]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all.order('created_at DESC') # 商品の並びを新着順にしている
@@ -31,6 +31,14 @@ class ItemsController < ApplicationController
       redirect_to item_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 

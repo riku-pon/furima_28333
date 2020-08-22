@@ -23,6 +23,19 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+      redirect_to item_path
+    else
+      render :edit
+    end
+  end
+
   def order # 購入する時のアクションを定義
     ItemOrder.create(item_id: params[:id]) # 商品のid情報を「item_id」として保存する
     redirect_to root_path

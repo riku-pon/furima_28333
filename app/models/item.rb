@@ -10,7 +10,8 @@ class Item < ApplicationRecord
   # アソシエーション
   belongs_to :user
   has_one :order
-  has_one_attached :image
+  has_one :purchase
+  has_one_attached :image # アクティブストレージ
 
   # バリデーション
   SELLING_PRICE = /\A[0-9]+\z/.freeze

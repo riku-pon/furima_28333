@@ -1,10 +1,7 @@
 const pay = () => {
-  console.log("aaa")
-  console.log("test")
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY); // PAY.JPテスト公開鍵
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {
-    console.log("bbb")
     e.preventDefault();
 
     const formResult = document.getElementById("charge-form");
@@ -16,9 +13,6 @@ const pay = () => {
       exp_year: `20${formData.get("exp_year")}`,
       cvc: formData.get("cvc"),
     };
-    console.log(card)
-    
-    
 
     Payjp.createToken(card, (status, response) => {
       if (status === 200) {
@@ -35,6 +29,7 @@ const pay = () => {
         document.getElementById("charge-form").submit();
         document.getElementById("charge-form").reset();
       } else {
+        document.getElementById("charge-form").submit(); //HTTPステータス200が返ってこなくてもsubmitする
       }
     });
   });

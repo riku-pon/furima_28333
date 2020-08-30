@@ -7,7 +7,7 @@ class OrderPurchase
   # orderモデルのバリデーション
   with_options presence: true do
     validates :postal_code, format: { with: POSTAL_CODE, message: 'is invalid. Include hyphen(-)' }
-    validates :city, :address, :phone_number
+    validates :city, :address, :phone_number, :token
   end
   validates :shipping_region_id, numericality: { other_than: 1, message: 'Select' }
 

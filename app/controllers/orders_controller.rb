@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
   before_action :move_to_index, only: :index
 
   def index
-    # session[:item_id] = params[:item_id]
     @order = OrderPurchase.new
     redirect_to root_path if current_user.id == @item.user_id # 出品者本人が購入ページへ行こうとするとトップページへ遷移する
   end

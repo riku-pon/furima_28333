@@ -134,12 +134,11 @@
             <%= image_tag item.image, class: "item-img" %>
 
             <%# 商品が売れていればsold outの表示 %>
-            <%# もしitem_orderテーブルに保存されていたら %>
-            <% if item.item_order != nil %> 
+            <%# もしpurchaseテーブルに保存されていたら %>
+            <% if item.purchase != nil %>
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
-            <% else %> 
             <% end %>
             <%# //商品が売れていればsold outの表示 %>
 

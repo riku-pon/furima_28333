@@ -15,7 +15,7 @@ class User < ApplicationRecord
   with_options presence: true do
     validates :family_name, :first_name, format: { with: FULL_NAME_REGEX, message: 'Full-width characters' }
     validates :phonetic_family_name, :phonetic_first_name, format: { with: FULL_NAME_KANA_REGEX, message: 'Full-width katakana characters' }
-    validates :nickname, :birthday
+    validates :nickname, :birthday, :password_confirmation
   end
   validates_uniqueness_of :nickname, case_sensitive: true
   validates :password, format: { with: PASSWORD_REGEX, message: 'Include both letters and numbers' }

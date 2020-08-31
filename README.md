@@ -25,7 +25,7 @@ Things you may want to cover:
 
 # テーブル設計
 
-## users　テーブル
+## users テーブル
 
 | Column               | Type   | Options     |
 | -------------------- | ------ | ----------- |
@@ -43,33 +43,33 @@ Things you may want to cover:
 
  - has_many :items
  - has_many :addresses
- - has_one :transactions
+ - has_one :orders
 
 ## items テーブル
 
-| Column              | Type      | Options                        |
-| ------------------- | --------- | ------------------------------ |
-| name                | string    | null: false                    |
-| description         | text      | null: false                    |
-| category            | integer   | null: false                    |
-| status              | integer   | null: false                    |
-| shipping_charges    | integer   | null: false                    |
-| shipping_region     | integer   | null: false                    |
-| days_until_shipping | integer   | null: false                    |
-| selling_price       | integer   | null: false                    |
-| users_id            | reference | null: false, foreign_key: true |
+| Column              | Type       | Options                        |
+| ------------------- | ---------- | ------------------------------ |
+| name                | string     | null: false                    |
+| description         | text       | null: false                    |
+| category            | integer    | null: false                    |
+| status              | integer    | null: false                    |
+| shipping_charges    | integer    | null: false                    |
+| shipping_region     | integer    | null: false                    |
+| days_until_shipping | integer    | null: false                    |
+| selling_price       | integer    | null: false                    |
+| user                | references | null: false, foreign_key: true |
 
 ### Association
 
  - belongs_to :user
  - has_one :address
 
-### transactions テーブル
+### orders テーブル
 
 | Column     | Type    | Options     |
 | ---------- | ------- | ----------- |
-| users_id   | integer | null: false |
-| items_id   | integer | null: false |
+| user_id    | integer | null: false |
+| item_id    | integer | null: false |
 
 ## Association
 
@@ -77,15 +77,15 @@ Things you may want to cover:
 
 ## addresses テーブル
 
-| Column        | Type      | Options                        |
-| ------------- | --------- | ------------------------------ |
-| postal_code   | string    | null: false                    |
-| prefectures   | integer   | null: false                    |
-| city          | string    | null: false                    |
-| address       | string    | null: false                    |
-| building_name | string    |
-| phone_number  | string    | null: false                    |
-| items_id      | reference | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    |
+| prefectures   | integer    | null: false                    |
+| city          | string     | null: false                    |
+| address       | string     | null: false                    |
+| building_name | string     |
+| phone_number  | string     | null: false                    |
+| item          | references | null: false, foreign_key: true |
 
 ### Association
 

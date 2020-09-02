@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all.order('created_at DESC') # 商品の並びを新着順にしている
+    @items = Item.includes(:user).order('created_at DESC') # 商品の並びを新着順にしている
   end
 
   def new

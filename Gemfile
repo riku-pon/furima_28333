@@ -66,3 +66,4 @@ gem 'payjp'
 group :production do #productionの記述で本番環境のみで使用
   gem 'rails_12factor'
 end
+gem "aws-sdk-s3", require: false
